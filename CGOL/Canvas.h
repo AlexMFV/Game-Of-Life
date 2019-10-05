@@ -3,25 +3,30 @@
 
 
 //Prototypes
-void DrawGrid(sf::Image *img, int gridSize);
+void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY);
 
 //Methods
-void DrawGrid(sf::Uint8* pixels, int gridSize, int sizeX, int sizeY) {
+void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY) {
 
 	int rowNum = sizeY / gridSize;
 	int columnNum = sizeX / gridSize;
-
-	for (int i = 0; i < sizeX * sizeY * 4; i++)
+	
+	for (int aux = 0; aux < sizeX * sizeY; aux++)
 	{
-		pixels[i] = 150;
-	}
+		int i = aux * 4;
 
-	/*for (int row = 0; row < rowNum; row++)
-	{
-		for (int col = 0; col < columnNum; col++)
-		{
-			img->setPixel(col * gridSize, row, gridColor);
-			img->setPixel(col, row * gridSize, gridColor);
+		//Still need to draw horizontal lines
+		if (aux % columnNum == 0) {
+			pixels[i] = 70;
+			pixels[i + 1] = 70;
+			pixels[i + 2] = 70;
+			pixels[i + 3] = 255;
 		}
-	}*/
+		else {
+			pixels[i] = 255;
+			pixels[i + 1] = 255;
+			pixels[i + 2] = 255;
+			pixels[i + 3] = 255;
+		}
+	}
 }

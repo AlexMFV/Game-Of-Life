@@ -5,16 +5,16 @@
 
 int main() {
 
-	int gridSize = 10; //Ammout of pixels that make a square in the grid ex: 5 = 5x5 pixel
+	int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
 	int m_width = 600;
 	int m_height = 600;
 
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 
-	const sf::Uint8* pixelBuffer = new sf::Uint8[m_width * m_height * 4];
+	sf::Uint8 *pixelBuffer = new sf::Uint8[m_width * m_height * 4];
 
 	sf::Texture texture;
-	texture.update(pixelBuffer);
+	texture.create(m_width, m_height);
 	
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
@@ -30,7 +30,9 @@ int main() {
 		window.clear();
 		//window.draw();
 
-		DrawGrid(&pixelBuffer, gridSize, m_width, m_height);
+		DrawGrid(pixelBuffer, gridSize, m_width, m_height);
+
+		texture.update(pixelBuffer);
 
 		window.draw(sprite);
 		window.display();
