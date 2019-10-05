@@ -12,21 +12,21 @@ void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY) {
 	int columnNum = sizeX / gridSize;
 	
 	for (int aux = 0; aux < sizeX * sizeY; aux++)
-	{
+	{ 
 		int i = aux * 4;
 
-		//Still need to draw horizontal lines
-		if (aux % columnNum == 0) {
-			pixels[i] = 70;
-			pixels[i + 1] = 70;
-			pixels[i + 2] = 70;
-			pixels[i + 3] = 255;
+		//Horizontal Lines & Vertical Lines respectively
+		if (aux % columnNum < 1 || (aux / sizeX) % rowNum >= 0 && (aux / sizeX) % rowNum < 1 || (aux+1) % sizeX == 0){
+			pixels[i] = gridColor.r;
+			pixels[i + 1] = gridColor.g;
+			pixels[i + 2] = gridColor.b;
+			pixels[i + 3] = gridColor.a;
 		}
 		else {
-			pixels[i] = 255;
-			pixels[i + 1] = 255;
-			pixels[i + 2] = 255;
-			pixels[i + 3] = 255;
+			pixels[i] = backgroundColor.r;
+			pixels[i + 1] = backgroundColor.g;
+			pixels[i + 2] = backgroundColor.b;
+			pixels[i + 3] = backgroundColor.a;
 		}
 	}
 }

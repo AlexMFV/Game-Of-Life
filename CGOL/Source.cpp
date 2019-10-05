@@ -5,9 +5,11 @@
 
 int main() {
 
-	int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
-	int m_width = 600;
-	int m_height = 600;
+	int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid //If you put 55 you get optical illusion lol
+	int m_width = 800;
+	int m_height = 800;
+
+	m_height += 1;
 
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 
@@ -18,6 +20,8 @@ int main() {
 	
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
+
+	int test = 0;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -31,7 +35,6 @@ int main() {
 		//window.draw();
 
 		DrawGrid(pixelBuffer, gridSize, m_width, m_height);
-
 		texture.update(pixelBuffer);
 
 		window.draw(sprite);
