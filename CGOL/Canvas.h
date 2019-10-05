@@ -4,6 +4,7 @@
 
 //Prototypes
 void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY);
+int AdjustGridSize(int gridSize, int w, int h);
 
 //Methods
 void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY) {
@@ -29,4 +30,12 @@ void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY) {
 			pixels[i + 3] = backgroundColor.a;
 		}
 	}
+}
+
+int AdjustGridSize(int gridSize, int w, int h) {
+	gridSize = gridSize > w / 2 ? w/2 : gridSize;
+
+	while (w % gridSize != 0 && h % gridSize != 0)
+		gridSize += 1;
+	return gridSize;
 }

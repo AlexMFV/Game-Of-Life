@@ -5,11 +5,12 @@
 
 int main() {
 
-	int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid //If you put 55 you get optical illusion lol
+	int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
 	int m_width = 800;
 	int m_height = 800;
-
 	m_height += 1;
+
+	gridSize = AdjustGridSize(gridSize, m_width, m_height-1);
 
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 
