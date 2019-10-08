@@ -140,6 +140,9 @@
   <ItemGroup>
     <ClInclude Include="Canvas.h" />
     <ClInclude Include="Common.h" />
+    <ClInclude Include="PixelBuffers.h" />
+    <ClInclude Include="Sprites.h" />
+    <ClInclude Include="Textures.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

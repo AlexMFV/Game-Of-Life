@@ -33,7 +33,7 @@ void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY) {
 }
 
 int AdjustGridSize(int gridSize, int w, int h) {
-	gridSize = gridSize > w / 2 ? w/2 : gridSize;
+	gridSize = gridSize > w/2 ? w/2 : gridSize;
 
 	while (w % gridSize != 0 && h % gridSize != 0)
 		gridSize += 1;

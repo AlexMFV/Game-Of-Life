@@ -2,25 +2,21 @@
 #include <stdint.h>
 #include <iostream>
 #include "Canvas.h"
+#include "PixelBuffers.h"
+#include "Sprites.h"
+#include "Common.h"
+#include "Textures.h"
 
 int main() {
-
-	int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
-	int m_width = 800;
-	int m_height = 800;
 	m_height += 1;
 
 	gridSize = AdjustGridSize(gridSize, m_width, m_height-1);
 
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 
-	sf::Uint8 *pixelBuffer = new sf::Uint8[m_width * m_height * 4];
-
-	sf::Texture texture;
-	texture.create(m_width, m_height);
-	
-	sf::Sprite sprite;
-	sprite.setTexture(texture);
+	//Set Grid sprite and Textures
+	gridTexture.create(m_width, m_height);
+	gridSprite.setTexture(gridTexture);
 
 	int test = 0;
 
@@ -30,15 +26,21 @@ int main() {
 		while (window.pollEvent(event)) {
 			if (event.type == event.Closed)
 				window.close();
+
+			if (event.type == event.KeyPressed)
+				if (event.key.code == sf::Keyboard::G)
+					isGridActive = ChangeStatus(isGridActive);
 		}
 
-		window.clear();
+		window.clear(sf::Color::White);
 		//window.draw();
 
-		DrawGrid(pixelBuffer, gridSize, m_width, m_height);
-		texture.update(pixelBuffer);
+		if (isGridActive) {
+			DrawGrid(gridPixelBuffer, gridSize, m_width, m_height);
+			gridTexture.update(gridPixelBuffer);
+			window.draw(gridSprite);
+		}
 
-		window.draw(sprite);
 		window.display();
 
 	}
