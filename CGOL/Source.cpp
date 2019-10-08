@@ -6,6 +6,7 @@
 #include "Sprites.h"
 #include "Common.h"
 #include "Textures.h"
+#include "Cursor.h"
 
 int main() {
 	m_height += 1;
@@ -27,6 +28,14 @@ int main() {
 			if (event.type == event.Closed)
 				window.close();
 
+			if (event.type == event.MouseButtonPressed)
+				if (event.mouseButton.button == sf::Mouse::Button::Left)
+					isMousePressed = true;
+					
+			if (event.type == event.MouseButtonReleased)
+				if(event.mouseButton.button == sf::Mouse::Button::Left)
+					isMousePressed = false;
+
 			if (event.type == event.KeyPressed)
 				if (event.key.code == sf::Keyboard::G)
 					isGridActive = ChangeStatus(isGridActive);
@@ -41,8 +50,12 @@ int main() {
 			window.draw(gridSprite);
 		}
 
-		window.display();
+		if (isMousePressed){
+			cursor = GetMouseCoordinates(window, cursor);
+			DrawSquare(cursor);
+		}
 
+		window.display();
 	}
 
 	return 0;

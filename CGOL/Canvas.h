@@ -5,6 +5,9 @@
 //Prototypes
 void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY);
 int AdjustGridSize(int gridSize, int w, int h);
+void DrawSquare(int mouseX, int mouseY);
+void DrawSquare(Cursor cur);
+Cursor GetMouseCoordinates(sf::RenderWindow& window, Cursor cursor);
 
 //Methods
 void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY) {
@@ -38,4 +41,18 @@ int AdjustGridSize(int gridSize, int w, int h) {
 	while (w % gridSize != 0 && h % gridSize != 0)
 		gridSize += 1;
 	return gridSize;
+}
+
+//The overloads receive the mouseX and mouseY relative to the window, not the screen
+void DrawSquare(int mouseX, int mouseY) {
+	//Draw the square in the calculated position
+}
+
+void DrawSquare(Cursor cur) {
+	//Draw the square in the calculated position
+}
+
+Cursor GetMouseCoordinates(sf::RenderWindow& window, Cursor cursor) {
+	cursor.SetPos(sf::Mouse::getPosition(window));
+	return cursor;
 }
