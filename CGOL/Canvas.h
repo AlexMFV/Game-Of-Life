@@ -6,7 +6,7 @@
 void DrawGrid(sf::Uint8 *pixels, int gridSize, int sizeX, int sizeY);
 int AdjustGridSize(int gridSize, int w, int h);
 void DrawSquare(int mouseX, int mouseY);
-void DrawSquare(Cursor cur);
+void DrawSquare(sf::Uint8 *pixels, Cursor cur);
 Cursor GetMouseCoordinates(sf::RenderWindow& window, Cursor cursor);
 
 //Methods
@@ -48,8 +48,60 @@ void DrawSquare(int mouseX, int mouseY) {
 	//Draw the square in the calculated position
 }
 
-void DrawSquare(Cursor cur) {
-	//Draw the square in the calculated position
+void DrawSquare(sf::Uint8* pixels, Cursor cur) {
+	int pixelX, pixelY;
+
+	pixelX = floor(cur.GetX() / floor(m_width / gridSize));
+	pixelY = floor(cur.GetY() / floor((m_height-1) / gridSize));
+
+	if(pixelX >= 0 && pixelX <= floor(m_width / gridSize)
+		&& pixelY >= 0 && pixelY <= floor((m_height-1) / gridSize)) {
+
+		int squareSize = floor(m_width / gridSize);
+
+		for (int i = 0; i < squareSize; i++)
+		{
+			for (int j = 0; j < squareSize; j++)
+			{
+				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i*4) + (j * m_width * 4)] = squareColor.r;
+				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4) + 1] = squareColor.g;
+				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4) + 2] = squareColor.b;
+				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4) + 3] = squareColor.a;
+			}
+		}
+		
+		//Maybe create a new array with window dimensions, identify the squares with a 1 or 0,
+		//after that, run the array and sum 4 to the pixels for each array access change colors,
+		//if 1 on the array then add (255, 0, 0, 255) on pixels array, otherwise if 0
+		//add (0, 0, 0, 0) to pixels[i] [i+1] [i+2] [i+3] 
+
+		/*for (int i = 0; i < m_height; i++)
+			for (int j = 0; j < m_width; j++)
+				if (squarePixels[i][j] == 0 && i == pixelY && j == pixelY)
+					squarePixels[i][j] = 1;*/
+
+		//int squareSizeX = floor(m_width / gridSize);
+		//int squareSizeY = floor(m_height / gridSize);
+		//int x = floor(cur.GetX() / gridSize) * gridSize * pixelX;
+		//int y = floor(cur.GetY() / gridSize) * gridSize;
+
+		//for (int i = 0; i < squareSizeY; i++) {
+		//	for (int j = 0; j < squareSizeX; j++) {
+		//		int adjI = i * 4;
+		//		int adjJ = j * 4;
+		//		pixels[x + (y * m_width * 4) + j] = squareColor.r;
+		//		pixels[x + (y * m_width * 4) + j + 1] = squareColor.r;
+		//		pixels[x + (y * m_width * 4) + j + 2] = squareColor.r;
+		//		pixels[x + (y * m_width * 4) + j + 3] = squareColor.r;
+
+		//		/*pixels[x + ((y + i) * m_width) + j] = squareColor.r;
+		//		pixels[x + ((y + i) * m_width) + j + 1] = squareColor.g;
+		//		pixels[x + ((y + i) * m_width) + j + 2] = squareColor.b;
+		//		pixels[x + ((y + i) * m_width) + j + 3] = squareColor.a;*/
+		//	}
+		//}
+
+	}
 }
 
 Cursor GetMouseCoordinates(sf::RenderWindow& window, Cursor cursor) {

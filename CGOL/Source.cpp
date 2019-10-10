@@ -9,15 +9,21 @@
 #include "Cursor.h"
 
 int main() {
-	m_height += 1;
-
 	gridSize = AdjustGridSize(gridSize, m_width, m_height-1);
 
+	//Makes all the pixels in the array, Transparent
+	TransparentArray(squaresPixelBuffer);
+
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
+	window.setVerticalSyncEnabled(true);
 
 	//Set Grid sprite and Textures
 	gridTexture.create(m_width, m_height);
 	gridSprite.setTexture(gridTexture);
+
+	//Set squares sprites and textures
+	squareTexture.create(m_width, m_height);
+	squareSprite.setTexture(squareTexture);
 
 	int test = 0;
 
@@ -52,9 +58,11 @@ int main() {
 
 		if (isMousePressed){
 			cursor = GetMouseCoordinates(window, cursor);
-			DrawSquare(cursor);
+			DrawSquare(squaresPixelBuffer, cursor);
+			squareTexture.update(squaresPixelBuffer);
 		}
 
+		window.draw(squareSprite);
 		window.display();
 	}
 

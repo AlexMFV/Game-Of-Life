@@ -1,4 +1,5 @@
-﻿  Cursor.cpp
-  Source.cpp
-  Generating Code...
+﻿  Source.cpp
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(54,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(55,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(60,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   CGOL.vcxproj -> C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\x64\Debug\CGOL.exe
