@@ -3,12 +3,12 @@
 
 sf::Color gridColor(0, 0, 0, 255); //Default: (71, 71, 71, 255)
 sf::Color backgroundColor(255, 255, 255, 255); //Default (255, 255, 255, 255)
-sf::Color squareColor(255, 0, 0, 255); //Default (0,0,0,255)
+sf::Color squareColor(0, 0, 0, 255); //Default (0,0,0,255)
 sf::Color transp(0, 0, 0, 0);
 
 //Grid Variables
 bool isGridActive = true;
-int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
+int gridSize = 50; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
 
 //Window Variables
 const int m_width = 800;
