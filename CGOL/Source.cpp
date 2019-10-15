@@ -42,9 +42,13 @@ int main() {
 				if(event.mouseButton.button == sf::Mouse::Button::Left)
 					isMousePressed = false;
 
-			if (event.type == event.KeyPressed)
+			if (event.type == event.KeyPressed) {
 				if (event.key.code == sf::Keyboard::G)
-					isGridActive = ChangeStatus(isGridActive);
+					isGridActive = !isGridActive;
+
+				if (event.key.code == sf::Keyboard::Space)
+					isPlaying = !isPlaying;
+			}
 		}
 
 		window.clear(sf::Color::White);
@@ -60,6 +64,10 @@ int main() {
 			cursor = GetMouseCoordinates(window, cursor);
 			DrawSquare(squaresPixelBuffer, cursor);
 			squareTexture.update(squaresPixelBuffer);
+		}
+
+		if (isPlaying) {
+			//Game Code, Move Squares, process interactions
 		}
 
 		window.draw(squareSprite);

@@ -1,5 +1,6 @@
 #pragma once
 #include "Cursor.h"
+#include <iostream>
 
 sf::Color gridColor(0, 0, 0, 255); //Default: (71, 71, 71, 255)
 sf::Color backgroundColor(255, 255, 255, 255); //Default (255, 255, 255, 255)
@@ -18,14 +19,15 @@ const int m_height = 800 + 1; //Never remove the + 1 (Add the size as you want)
 bool isMousePressed = false;
 Cursor cursor(0,0);
 
-bool ChangeStatus(bool value);
+//Main Game Variables
+bool isPlaying = false;
+
+//bool ChangeStatus(bool value);
 void TransparentArray(sf::Uint8* pixels);
 
-bool ChangeStatus(bool value) {
-	if (value)
-		return false;
-	return true;
-}
+//bool ChangeStatus(bool value) {
+//	return !value;
+//}
 
 void TransparentArray(sf::Uint8* pixels) {
 	for (int i = 0; i < m_width * m_height; i++)
