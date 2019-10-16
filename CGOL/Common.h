@@ -9,7 +9,7 @@ sf::Color transp(0, 0, 0, 0);
 
 //Grid Variables
 bool isGridActive = true;
-int gridSize = 50; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
+int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
 
 //Window Variables
 const int m_width = 800;
@@ -17,6 +17,7 @@ const int m_height = 800 + 1; //Never remove the + 1 (Add the size as you want)
 
 //Mouse Variables
 bool isMousePressed = false;
+bool isMouseClearPressed = false;
 Cursor cursor(0,0);
 
 //Main Game Variables

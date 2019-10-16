@@ -5,8 +5,7 @@
 //Prototypes
 void DrawGrid(sf::Uint8* pixels, int gridSize, int sizeX, int sizeY);
 int AdjustGridSize(int gridSize, int w, int h);
-void DrawSquare(int mouseX, int mouseY);
-void DrawSquare(sf::Uint8* pixels, Cursor cur);
+void DrawSquare(sf::Uint8* pixels, Cursor cur, bool type);
 Cursor GetMouseCoordinates(sf::RenderWindow& window, Cursor cursor);
 
 //Methods
@@ -43,12 +42,7 @@ int AdjustGridSize(int gridSize, int w, int h) {
 	return gridSize;
 }
 
-//The overloads receive the mouseX and mouseY relative to the window, not the screen
-void DrawSquare(int mouseX, int mouseY) {
-	//Draw the square in the calculated position
-}
-
-void DrawSquare(sf::Uint8* pixels, Cursor cur) {
+void DrawSquare(sf::Uint8* pixels, Cursor cur, bool draw) {
 
 	int pixelX, pixelY;
 
@@ -59,15 +53,26 @@ void DrawSquare(sf::Uint8* pixels, Cursor cur) {
 		&& pixelY >= 0 && pixelY < (m_height - 1) / floor((m_height - 1) / gridSize)) {
 
 		int squareSize = floor(m_width / gridSize);
+		
+		//The color in which the square is drawn
+		sf::Color color;
 
-		for (int i = 0; i < squareSize; i++)
+		if (draw)
+			color = squareColor;
+		else
+			color = backgroundColor;
+		
+		int i,j;
+		for (draw ? i = 0 : i = 1; i < squareSize; i++)
 		{
-			for (int j = 0; j < squareSize; j++)
+			for (draw ? j = 0 : j = 1; j < squareSize; j++)
 			{
-				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4)] = squareColor.r;
-				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4) + 1] = squareColor.g;
-				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4) + 2] = squareColor.b;
-				pixels[(pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4) + 3] = squareColor.a;
+				int calculate = (pixelX * squareSize * 4) + (pixelY * squareSize * m_width * 4) + (i * 4) + (j * m_width * 4);
+				
+				pixels[calculate] = color.r;
+				pixels[calculate + 1] = color.g;
+				pixels[calculate + 2] = color.b;
+				pixels[calculate + 3] = color.a;
 			}
 		}
 	}

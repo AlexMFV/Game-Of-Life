@@ -34,13 +34,21 @@ int main() {
 			if (event.type == event.Closed)
 				window.close();
 
-			if (event.type == event.MouseButtonPressed)
+			if (event.type == event.MouseButtonPressed) {
 				if (event.mouseButton.button == sf::Mouse::Button::Left)
 					isMousePressed = true;
+
+				if (event.mouseButton.button == sf::Mouse::Button::Right)
+					isMouseClearPressed = true;
+			}
 					
-			if (event.type == event.MouseButtonReleased)
-				if(event.mouseButton.button == sf::Mouse::Button::Left)
+			if (event.type == event.MouseButtonReleased) {
+				if (event.mouseButton.button == sf::Mouse::Button::Left)
 					isMousePressed = false;
+
+				if (event.mouseButton.button == sf::Mouse::Button::Right)
+					isMouseClearPressed = false;
+			}
 
 			if (event.type == event.KeyPressed) {
 				if (event.key.code == sf::Keyboard::G)
@@ -60,9 +68,16 @@ int main() {
 			window.draw(gridSprite);
 		}
 
+		//Handle drawing or clearing the squares
+		if (isMouseClearPressed) {
+			cursor = GetMouseCoordinates(window, cursor);
+			DrawSquare(squaresPixelBuffer, cursor, false);
+			squareTexture.update(squaresPixelBuffer);
+		}
+
 		if (isMousePressed){
 			cursor = GetMouseCoordinates(window, cursor);
-			DrawSquare(squaresPixelBuffer, cursor);
+			DrawSquare(squaresPixelBuffer, cursor, true);
 			squareTexture.update(squaresPixelBuffer);
 		}
 
