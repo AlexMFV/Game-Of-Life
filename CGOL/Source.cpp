@@ -27,6 +27,8 @@ int main() {
 
 	int test = 0;
 
+	bool debug = false;
+
 	while (window.isOpen()) {
 		sf::Event event;
 
@@ -83,7 +85,22 @@ int main() {
 
 		if (isPlaying) {
 			//Game Code, Move Squares, process interactions
+			ProcessSquares(squaresPixelBuffer);
+			squareTexture.update(squaresPixelBuffer);
 		}
+
+		///////////// DEBUG PURPOSES ONLY //////////////
+		//if (debug) {
+		//	DrawSquare(squaresPixelBuffer, 1, 1, true);
+		//	squareTexture.update(squaresPixelBuffer);
+		//	debug = !debug;
+		//}
+		//else {
+		//	DrawSquare(squaresPixelBuffer, 1, 1, false);
+		//	squareTexture.update(squaresPixelBuffer);
+		//	debug = !debug;
+		//}
+		///////////// DEBUG PURPOSES ONLY //////////////
 
 		window.draw(squareSprite);
 		window.display();
