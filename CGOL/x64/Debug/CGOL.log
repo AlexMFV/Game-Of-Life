@@ -1,9 +1,9 @@
 ﻿  Source.cpp
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(57,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(58,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(67,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(100,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(119,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(125,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(152): warning C4715: 'Check': not all control paths return a value
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(62,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(63,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(72,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(105,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(134,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(140,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(167): warning C4715: 'Check': not all control paths return a value
   CGOL.vcxproj -> C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\x64\Debug\CGOL.exe

@@ -14,7 +14,7 @@ int main() {
 	//Makes all the pixels in the array, Transparent
 	TransparentArray(squaresPixelBuffer);
 
-	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
+	//sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 	window.setVerticalSyncEnabled(true);
 
 	//Set Grid sprite and Textures

@@ -15,6 +15,11 @@ int Neighbours(sf::Uint8* pixels, int x, int y, int size);
 sf::Color GetSquareColor(sf::Uint8* pixels, int x, int y, int size);
 int Formula(int x, int y, int size);
 
+//DEBUG ONLY
+void DebugPixel(sf::Uint8* pixels, int pixel, sf::Color color);
+sf::Texture pixelDebug;
+sf::Sprite pixelSprite;
+
 //Methods
 void DrawGrid(sf::Uint8* pixels, int gridSize, int sizeX, int sizeY) {
 
@@ -105,8 +110,15 @@ void ProcessSquares(sf::Uint8* pixels) {
 	std::vector<int> toDraw;
 	std::vector<int> toDelete;
 
+	//DEBUG ONLY
+	pixelDebug.create(m_width, m_height);
+	pixelSprite.setTexture(pixelDebug);
+
 	for (int y = 0; y < gridSize; y++) {
 		for (int x = 0; x < gridSize; x++) {
+			
+			//DEBUG THE PIXEL?
+
 			if (Check(pixels, x, y, squareSize))
 				toDraw.push_back((x + y * gridSize));
 			else
@@ -133,6 +145,11 @@ bool Check(sf::Uint8* pixels, int x, int y, int squareSize) {
 	//First determine if dead or alive, then check how many neighbors, then draw accordingly
 	bool isAlive = GetSquareColor(pixels, x, y, squareSize) == squareColor ? true : false;
 	int neibs = Neighbours(pixels, x, y, squareSize);
+
+	//DEBUG ONLY
+	sf::Color before = GetSquareColor(pixels, x, y, squareSize);
+	DebugPixel(pixels, Formula(x, y, squareSize), debugColor);
+	DebugPixel(pixels, Formula(x, y, squareSize), before);
 
 	if (isAlive) {
 		//If alive and population > 3 || < 2, dies
@@ -221,4 +238,15 @@ sf::Color GetSquareColor(sf::Uint8* pixels, int x, int y, int size) {
 //Transforms cartesian values (x, y) to "pixel number"
 int Formula(int x, int y, int size) {
 	return (x * size * 4) + (y * size * m_width * 4) + 4;
+}
+
+void DebugPixel(sf::Uint8* pixels, int pixel, sf::Color color) {
+	pixels[pixel] = color.r;
+	pixels[pixel+1] = color.g;
+	pixels[pixel+2] = color.b;
+	pixels[pixel+3] = color.a;
+
+	pixelDebug.update(pixels);
+	window.draw(pixelSprite);
+	window.display();
 }
