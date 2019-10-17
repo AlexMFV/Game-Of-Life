@@ -14,8 +14,9 @@ int main() {
 	//Makes all the pixels in the array, Transparent
 	TransparentArray(squaresPixelBuffer);
 
-	//sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
+	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 	window.setVerticalSyncEnabled(true);
+	window.setFramerateLimit(30);
 
 	//Set Grid sprite and Textures
 	gridTexture.create(m_width, m_height);
@@ -62,7 +63,6 @@ int main() {
 		}
 
 		window.clear(sf::Color::White);
-		//window.draw();
 
 		if (isGridActive) {
 			DrawGrid(gridPixelBuffer, gridSize, m_width, m_height);
@@ -88,19 +88,6 @@ int main() {
 			ProcessSquares(squaresPixelBuffer);
 			squareTexture.update(squaresPixelBuffer);
 		}
-
-		///////////// DEBUG PURPOSES ONLY //////////////
-		//if (debug) {
-		//	DrawSquare(squaresPixelBuffer, 1, 1, true);
-		//	squareTexture.update(squaresPixelBuffer);
-		//	debug = !debug;
-		//}
-		//else {
-		//	DrawSquare(squaresPixelBuffer, 1, 1, false);
-		//	squareTexture.update(squaresPixelBuffer);
-		//	debug = !debug;
-		//}
-		///////////// DEBUG PURPOSES ONLY //////////////
 
 		window.draw(squareSprite);
 		window.display();

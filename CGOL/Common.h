@@ -8,11 +8,9 @@ sf::Color backgroundColor(255, 255, 255, 255); //Default (255, 255, 255, 255)
 sf::Color squareColor(0, 0, 0, 255); //Default (0,0,0,255)
 sf::Color transp(0, 0, 0, 0);
 
-sf::Color debugColor(255, 0, 0, 255);
-
 //Grid Variables
 bool isGridActive = true;
-int gridSize = 3; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
+int gridSize = 50; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
 
 //Window Variables
 const int m_width = 800;
@@ -22,8 +20,6 @@ const int m_height = 800 + 1; //Never remove the + 1 (Add the size as you want)
 bool isMousePressed = false;
 bool isMouseClearPressed = false;
 Cursor cursor(0,0);
-
-sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 
 //Main Game Variables
 bool isPlaying = false;
