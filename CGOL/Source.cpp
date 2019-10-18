@@ -13,6 +13,7 @@ int main() {
 
 	//Makes all the pixels in the array, Transparent
 	TransparentArray(squaresPixelBuffer);
+	ColoredArray(bgPixelBuffer);
 
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 	window.setVerticalSyncEnabled(true);
@@ -25,6 +26,11 @@ int main() {
 	//Set squares sprites and textures
 	squareTexture.create(m_width, m_height);
 	squareSprite.setTexture(squareTexture);
+
+	//Back ground Texture and sprite
+	bgTexture.create(m_width, m_height);
+	bgTexture.update(bgPixelBuffer);
+	bgSprite.setTexture(bgTexture);
 
 	int test = 0;
 
@@ -57,8 +63,18 @@ int main() {
 				if (event.key.code == sf::Keyboard::G)
 					isGridActive = !isGridActive;
 
-				if (event.key.code == sf::Keyboard::Space)
+				if (event.key.code == sf::Keyboard::Space) {
+					isPlaying ? ColoredArray(bgPixelBuffer) : TransparentArray(bgPixelBuffer);
+					bgTexture.update(bgPixelBuffer);
 					isPlaying = !isPlaying;
+				}
+
+				if (event.key.code == sf::Keyboard::O) {
+					squaresPixelBuffer = nullptr;
+					squaresPixelBuffer = new sf::Uint8[m_width * m_height * 4];
+					TransparentArray(squaresPixelBuffer);
+					squareTexture.update(squaresPixelBuffer);
+				}
 			}
 		}
 
@@ -69,6 +85,12 @@ int main() {
 			gridTexture.update(gridPixelBuffer);
 			window.draw(gridSprite);
 		}
+		/*else
+		{
+			TransparentArray(gridPixelBuffer);
+			gridTexture.update(gridPixelBuffer);
+			window.draw(gridSprite);
+		}*/
 
 		//Handle drawing or clearing the squares
 		if (isMouseClearPressed) {
@@ -89,6 +111,8 @@ int main() {
 			squareTexture.update(squaresPixelBuffer);
 		}
 
+		//window.draw(gridSprite);
+		window.draw(bgSprite);
 		window.draw(squareSprite);
 		window.display();
 	}
