@@ -1,0 +1,2 @@
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Debug\CGOL.exe
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Debug\CGOL.pdb

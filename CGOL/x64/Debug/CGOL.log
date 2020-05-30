@@ -1,9 +1,11 @@
-﻿  Source.cpp
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(57,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(58,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(67,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(100,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(119,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(125,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(152): warning C4715: 'Check': not all control paths return a value
-  CGOL.vcxproj -> C:\Users\Alex\Desktop\Repos\Game-Of-Life\CGOL\x64\Debug\CGOL.exe
+﻿  Cursor.cpp
+  Source.cpp
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(57,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(58,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(67,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(100,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(119,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(125,9): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+C:\Users\Alex~\Desktop\Repos\Game-Of-Life\CGOL\Canvas.h(152): warning C4715: 'Check': not all control paths return a value
+sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1112: module machine type 'x86' conflicts with target machine type 'x64'

@@ -11,11 +11,12 @@ sf::Color pauseColor(80, 80, 80, 50);
 
 //Grid Variables
 bool isGridActive = true;
-int gridSize = 20; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
+int gridSize = 100; //Ammout of "pixels" that make the grid ex: 5 = 5x5 grid
 
 //Window Variables
 const int m_width = 800;
 const int m_height = 800 + 1; //Never remove the + 1 (Add the size as you want)
+int fps_limit = 30;
 
 //Mouse Variables
 bool isMousePressed = false;

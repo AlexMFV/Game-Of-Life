@@ -7,6 +7,9 @@
 #include "Common.h"
 #include "Textures.h"
 #include "Cursor.h"
+#include <stdlib.h>
+
+using namespace std;
 
 int main() {
 	gridSize = AdjustGridSize(gridSize, m_width, m_height-1);
@@ -17,7 +20,7 @@ int main() {
 
 	sf::RenderWindow window(sf::VideoMode(m_width, m_height), "Conway's Game Of Life");
 	window.setVerticalSyncEnabled(true);
-	window.setFramerateLimit(30);
+	window.setFramerateLimit(fps_limit);
 
 	//Set Grid sprite and Textures
 	gridTexture.create(m_width, m_height);
@@ -63,6 +66,26 @@ int main() {
 				if (event.key.code == sf::Keyboard::G)
 					isGridActive = !isGridActive;
 
+				if (event.key.code == sf::Keyboard::Subtract)
+				{
+					if (fps_limit > 5)
+						fps_limit -= 5;
+					window.setFramerateLimit(fps_limit);
+				}
+
+				if (event.key.code == sf::Keyboard::Add)
+				{
+					if (fps_limit < 60)
+						fps_limit += 5;
+					window.setFramerateLimit(fps_limit);
+				}
+
+				if (event.key.code == sf::Keyboard::Multiply)
+				{
+					fps_limit = 30;
+					window.setFramerateLimit(fps_limit);
+				}
+
 				if (event.key.code == sf::Keyboard::Space) {
 					isPlaying ? ColoredArray(bgPixelBuffer) : TransparentArray(bgPixelBuffer);
 					bgTexture.update(bgPixelBuffer);
@@ -77,6 +100,9 @@ int main() {
 				}
 			}
 		}
+
+		//Write current FPS to console
+		//std::cout << "Current FPS: " << fps_limit;
 
 		window.clear(sf::Color::White);
 
